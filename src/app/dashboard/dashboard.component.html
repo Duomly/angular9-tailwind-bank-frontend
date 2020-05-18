@@ -1,0 +1,10 @@
+<div id="dashboard-component" class="container mx-auto grid">
+  <div class="flex mb-4 mt-24">
+    <div class="mx-auto">
+      <h3 class="text-gray-700 font-normal mx-auto">
+        <span class="font-black">Hi {{user ? user.Username : ''}},</span> here is your dashboard:
+      </h3>
+    </div>
+  </div>
+  <app-account-balance [user]="user"></app-account-balance>
+</div>
