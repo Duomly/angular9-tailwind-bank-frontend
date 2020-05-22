@@ -1,12 +1,13 @@
 <div id="login-container" class="flex container mx-auto items-center justify-center">
   <div class="w-full max-w-xs">
     <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-      <img class="logo" src="../../assets/logo.png" />
+      <img src="../../assets/logo.png" class="logo" />
       <div class="mb-4">
         <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
           Username
         </label>
         <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username" (keyup)="onKey($event, 'username')">
+        <p *ngIf="!isUsernameValid" class="text-red-500 text-xs italic">Username can consist of letters and numbers only!</p>
       </div>
       <div class="mb-6">
         <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
@@ -24,7 +25,7 @@
       </div>
     </form>
     <p class="text-center text-white text-xs">
-      &copy;2020 FinanceApp. All rights reserved.
+      &copy;2020 Banking App by Duomly. All rights reserved.
     </p>
   </div>
   <div *ngIf="error" class="notification bg-indigo-900 text-center py-4 lg:px-4">
