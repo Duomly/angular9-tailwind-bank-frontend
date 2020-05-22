@@ -25,7 +25,7 @@ export class LoginService {
   login(Username: string, Password: string): any {
     this.http.post(this.ulr, { Username, Password }, httpOptions).toPromise().then((res: any) => {
       if (res && res.jwt) {
-        sessionStorage.setItem('jwt', res.data.jwt);
+        sessionStorage.setItem('jwt', res.jwt);
         this.errorSubject.next(null);
         this.router.navigateByUrl('dashboard');
       } else if (res.Message) {
