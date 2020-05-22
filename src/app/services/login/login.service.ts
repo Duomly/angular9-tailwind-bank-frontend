@@ -13,12 +13,9 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class LoginService {
-  url = 'http://localhost:4200/login';
-  isLoggedIn = false;
-  userSubject = new BehaviorSubject<any>(null);
-  errorSubject = new BehaviorSubject<any>(null);
-  user = this.userSubject.asObservable();
-  errorMessage = this.errorSubject.asObservable();
+  ulr: any = 'http://localhost:4200/login';
+  errorSubject: any = new BehaviorSubject<any>(null);
+  errorMessage: any = this.errorSubject.asObservable();
 
   constructor(
     private http: HttpClient,
@@ -26,20 +23,23 @@ export class LoginService {
   ) { }
 
   login(Username: string, Password: string): any {
-    this.http.post(this.url, { Username, Password }, httpOptions).toPromise().then((res: any) => {
-      if (res.Data && res.Data.length) {
-        this.userSubject.next(res.Data[0]);
+    this.http.post(this.ulr, { Username, Password }, httpOptions).toPromise().then((res: any) => {
+      if (res && res.jwt) {
+        sessionStorage.setItem('jwt', res.data.jwt);
         this.errorSubject.next(null);
-        this.isLoggedIn = true;
-        this.router.navigateByUrl('/dashboard');
+        this.router.navigateByUrl('dashboard');
       } else if (res.Message) {
-        this.userSubject.next(null);
         this.errorSubject.next(res.Message);
       }
     });
   }
 
-  isAuthenticated() {
-    return this.isLoggedIn;
+  isAuthenticated(): boolean {
+    if (sessionStorage.getItem('jwt')) {
+      return true;
+    } else {
+      return false;
+    }
   }
+
 }

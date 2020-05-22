@@ -6,7 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { AuthGuardService } from './services/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -19,9 +18,7 @@ import { AuthGuardService } from './services/auth-guard.service';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [
-    AuthGuardService,
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
