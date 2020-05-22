@@ -11,8 +11,8 @@ export class AuthGuardGuard implements CanActivate {
 
   ) { }
 
-  canActivate(): boolean {
-    if (!this.login.isAuthenticated) {
+  canActivate(): boolean { 
+    if (!this.login.isAuthenticated()) {
       return false;
     } else {
       return true;
