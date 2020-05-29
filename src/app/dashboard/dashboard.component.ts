@@ -16,8 +16,8 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.loginService
       .userSubject
-      .subscribe(userMessage => {
-        this.user = userMessage;
+      .subscribe(user => {
+        this.user = user;
       });
   }
 }

@@ -17,7 +17,7 @@ export class LoginService {
   errorSubject: any = new BehaviorSubject<any>(null);
   errorMessage: any = this.errorSubject.asObservable();
   userSubject: any = new BehaviorSubject<any>(null);
-  userMessage: any = this.userSubject.asObservable();
+  user: any = this.userSubject.asObservable();
 
   constructor(
     private http: HttpClient,
