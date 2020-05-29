@@ -1,0 +1,14 @@
+<div *ngFor="let userAccount of user.Accounts">
+  <div id="balance-card" class="relative mx-auto max-w-sm rounded-lg overflow-hidden shadow-lg bg-white mt-5">
+    <div class="px-6 py-4">
+      <div class="font-bold text-xl mb-2">Current {{userAccount ? userAccount.Name : 'Account'}} Balance</div>
+      <p class="text-pink-500 text-5xl">
+        {{userAccount ? userAccount.Balance : ''}}$
+      </p>
+      <div><img class="absolute bottom-0 right-0" src="../../assets/balance-account-image.png" /></div>
+    </div>
+    <div class="px-6 py-4">
+      <span class="inline-block bg-gray-200 rounded px-3 py-1 text-sm font-semibold text-gray-700">Today is: {{day}}.{{month}}.{{year}}</span>
+    </div>
+  </div>
+</div>
