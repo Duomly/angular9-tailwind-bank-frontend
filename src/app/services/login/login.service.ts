@@ -27,7 +27,7 @@ export class LoginService {
   login(Username: string, Password: string): any {
     this.http.post(this.url, { Username, Password }, httpOptions).toPromise().then((res: any) => {
       if (res && res.jwt) {
-        sessionStorage.setItem('jwt', res.data.jwt);
+        sessionStorage.setItem('jwt', res.jwt);
         this.errorSubject.next(null);
         if (res.data) {
           this.userSubject.next(res.data);
