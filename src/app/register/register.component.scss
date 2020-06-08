@@ -1,0 +1,21 @@
+#register-container {
+  min-height: 100vh;
+  min-width: 100vw;
+  color: white;
+  position: relative;
+  background-image: url('../../assets/background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  .logo {
+    max-height: 60px;
+    margin: auto;
+    margin-bottom: 30px;
+  }
+  .notification {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+  }
+}

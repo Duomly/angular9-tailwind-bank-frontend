@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from './../services/login/login.service';
+import { UserService } from '../services/user/user.service';
 
 @Component({
   selector: 'app-login',
@@ -13,11 +13,11 @@ export class LoginComponent implements OnInit {
   error: any = null;
 
   constructor(
-    private loginService: LoginService,
+    private userService: UserService,
   ) { }
 
   ngOnInit(): void {
-    this.loginService
+    this.userService
       .errorSubject
       .subscribe(errorMessage => {
         this.error = errorMessage;
@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     if (this.isUsernameValid) {
-      this.loginService
+      this.userService
         .login(this.username, this.password);
     }
   }
