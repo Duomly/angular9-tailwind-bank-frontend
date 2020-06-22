@@ -31,8 +31,9 @@ export class UserService {
         this.errorSubject.next(null);
         if (res.data) {
           this.userSubject.next(res.data);
+          sessionStorage.setItem('userId', res.data.ID);
         }
-        this.router.navigateByUrl('dashboard');
+        this.router.navigateByUrl('');
       } else if (res.Message) {
         this.errorSubject.next(res.Message);
       }
@@ -46,19 +47,25 @@ export class UserService {
         this.errorSubject.next(null);
         if (res.data) {
           this.userSubject.next(res.data);
+          sessionStorage.setItem('userId', res.data.ID);
         }
-        this.router.navigateByUrl('dashboard');
+        this.router.navigateByUrl('');
       } else if (res.Message) {
         this.errorSubject.next(res.Message);
       }
     });
   }
 
-  isAuthenticated(): boolean {
-    if (sessionStorage.getItem('jwt')) {
-      return true;
-    } else {
-      return false;
-    }
+  getUser() {
+    const userId = sessionStorage.getItem('userId');
+    const jwtToken = sessionStorage.getItem('jwt');
+    const reqHeader = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + jwtToken,
+      })
+    };
+
+    return this.http.get(`${this.url}user/${userId}`, reqHeader);
   }
 }

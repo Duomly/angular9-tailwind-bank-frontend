@@ -6,5 +6,5 @@
       </h3>
     </div>
   </div>
-  <app-account-balance [user]="user"></app-account-balance>
+  <app-account-balance *ngIf="user" [user]="user"></app-account-balance>
 </div>
